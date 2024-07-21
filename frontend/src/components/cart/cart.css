@@ -1,0 +1,32 @@
+.cart {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: fit-content;
+    width: 30%;
+}
+
+h2 {
+    color: var(--red);
+    font-size: 1.5rem;
+}
+
+.empty-img {
+    display: block;
+    margin: 1rem auto;
+}
+
+.empty-text {
+    color: var(--rose500);
+    font-weight: 500;
+}
+
+@media screen and (max-width: 1000px) {
+    .cart {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+}

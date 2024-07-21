@@ -1,0 +1,60 @@
+@import url(https://fonts.googleapis.com/css?family=Red+Hat+Text:300,regular,500,600,700,300italic,italic,500italic,600italic,700italic);
+:root {
+  --red: hsl(14, 86%, 42%);
+  --green: hsl(159, 69%, 38%);
+  --rose50: hsl(20, 50%, 98%);
+  --rose100: hsl(13, 31%, 94%);
+  --rose300: hsl(14, 25%, 72%);
+  --rose400: hsl(7, 20%, 60%);
+  --rose500: hsl(12, 20%, 44%);
+  --rose900: hsl(14, 65%, 9%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Red Hat Text; 
+  font-size: 16px;
+  color: var(--rose900);
+}
+
+body {
+  background-color: var(--rose100);
+  padding: 4rem;
+}
+
+main {
+  display: flex;
+  gap: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.articles-section {
+  width: 70%;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    flex-direction: column;
+  }
+
+  .articles-section {
+    width: 100%;
+  }
+
+  body {
+    padding: 2.5rem;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+}
