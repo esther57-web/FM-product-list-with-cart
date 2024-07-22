@@ -3,35 +3,22 @@ import cartIcon from './../../../assets/images/icon-add-to-cart.svg';
 import { useState } from 'react';
 import minus from './../../../assets/images/icon-decrement-quantity.svg'
 import plus from './../../../assets/images/icon-increment-quantity.svg'
-//import { addArticleToCart, updateQuantity } from '../../lib/constants';
-const API_ROUTES = 'http://localhost:4000/api/articles';
-import axios from 'axios';
+import { addArticleToCart } from '../../lib/constants';
+//import {API_ROUTES, API_URL} from './../../lib/constants'
+//import axios from 'axios';
 
 
 const Articles = props => {
     let [itemQuantity, setItemQuantity] = useState(0)
 
-    async function addArticleToCart(props) {
-        const article = {
-          name: props.name,
-          price: props.price,
-          quantity: itemQuantity,
-          imageUrl: props.image.thumbnail
-        };
-        const bodyData = JSON.stringify(article);
-      
-        try {
-          return await axios({
-            method: 'post',
-            url: `${API_ROUTES}`,
-            data: bodyData,
-          });
-        } catch (err) {
-          console.error(err);
-          return { error: true, message: err.message };
-        }
-      }
-    
+    async function addArticle(props) {
+        const newArticle = await addArticleToCart(props)
+        if (!newArticle.error) {
+            setItemQuantity(1);
+          } else {
+            alert(newArticle.message);
+          }
+    }
 
   return (
     <article className='article' key={props.index}>
@@ -41,7 +28,7 @@ const Articles = props => {
                     <img src={props.image.desktop} alt={props.name}></img>
                 </picture>
                 <div>
-                    {itemQuantity === 0 && (<div className='add-to-cart-btn' onClick={() => {setItemQuantity(1);addArticleToCart();}}>
+                    {itemQuantity === 0 && (<div className='add-to-cart-btn' onClick={() => {addArticle(props)}}>
                         <img src={cartIcon} alt='Add to Cart'></img>
                         <p>Add to Cart</p>
                     </div>)}

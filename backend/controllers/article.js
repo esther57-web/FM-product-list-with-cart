@@ -1,15 +1,13 @@
 const Article = require('../models/Article');
 const fs = require('fs');
 
-//Initialise averageRating à 0 et le ratings avec un tableau vide
-// optimisation
 exports.addArticle = (req, res, next) => {
-  const articleObject = JSON.parse(req.body.article);
+  console.log(req.body)
+  const articleObject = req.body;
   delete articleObject._id;
   
   const article = new Article({
-      ...articleObject,
-      imageUrl: `${req.protocol}://${req.get('host')}/images/opt_${req.file.filename}`,
+      ...articleObject
   });
   article.save()
   .then(() => res.status(201).json({ message: 'Objet enregistré !'})) 
